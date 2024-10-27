@@ -1,0 +1,40 @@
+{
+  "name": "hanafuda-bot.git",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Hanafuda Bot is a powerful tool designed for you to automate hanafuda retroactive airdrop.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node start.js",
+    "setup": "node setup.js",
+    "dev": "node index.js",
+    "build": "rm -rf app && javascript-obfuscator --config build-config.json",
+    "test": "node test.js"
+  },
+  "keywords": [
+    "hanafuda",
+    "hanafuda-bot.git",
+    "evm-bot",
+    "hana",
+    "airdropinsiderid"
+  ],
+  "author": "AirdropInsiderID",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/airdropinsiders/Hanafuda-Testnet.git"
+  },
+  "dependencies": {
+    "bip39": "^3.1.0",
+    "blessed": "^0.1.81",
+    "ethers": "^6.13.2",
+    "https-proxy-agent": "^7.0.5",
+    "input": "^1.0.1",
+    "moment-timezone": "^0.5.45",
+    "node-fetch": "^3.3.2",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7",
+    "twisters": "^1.1.0",
+    "winston": "^3.13.0"
+  }
+}
