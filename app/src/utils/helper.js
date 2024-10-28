@@ -1,137 +1,131 @@
-import a8_0x49c96a from 'bip39';
-import a8_0x26e9bb from 'moment-timezone';
-import { ethers } from 'ethers';
-import { Config } from '../../config/config.js';
-import { Twist } from './twist.js';
-import { Bless } from './bless.js';
-import { RPC } from '../core/network/rpc.js';
-
-export class Helper {
-  static ["display"] = Config.DISPLAY;
-  static ['twist'] = this.display == 'TWIST' ? new Twist() : new Bless();
-  static ['myCode'] = '21OM73';
-  static ['spinnerContent'] = (_0x4699b4, _0x4d7f95) => _0x4699b4 ? "\nName                    : " + _0x4d7f95.name + "\nAddress                 : " + _0x4d7f95.address + "\nPoint                   : " + _0x4d7f95.point + "\nDeposit Count | Today   : " + _0x4d7f95.depo + " | " + _0x4d7f95.depoToday + '/' + Config.DAILYDEPOSITCOUNT + "\nBalance                 : " + _0x4d7f95.balance + " " + RPC.SYMBOL + "\nGrows | Garden Rewards  : " + _0x4d7f95.grow + " | " + _0x4d7f95.gardenReward + "\n               \nStatus : " + _0x4d7f95.msg + "\nDelay : " + _0x4d7f95.delay + "\n" : "\nName                    : " + _0x4d7f95.name + "\nAddress                 : " + _0x4d7f95.address + "\nPoint                   : " + _0x4d7f95.point + "\nGrows | Garden Rewards  : " + _0x4d7f95.grow + " | " + _0x4d7f95.gardenReward + "\n               \nStatus : " + _0x4d7f95.msg + "\nDelay : " + _0x4d7f95.delay + "\n";
-  static ['delay'] = (_0x434d5e, _0x1db6c9, _0x22641a, _0x524994) => {
-    return new Promise(async _0x1b0c3a => {
-      let _0xc53846 = _0x434d5e;
-      if (_0x1db6c9 != undefined) {
-        await this.twist.log(_0x22641a, _0x1db6c9, _0x524994, "Delaying for " + this.msToTime(_0x434d5e));
-      } else {
-        await this.twist.info("Delaying for " + this.msToTime(_0x434d5e));
-      }
-      const _0x142f6b = setInterval(async () => {
-        _0xc53846 -= 0x3e8;
-        if (_0x1db6c9 != undefined) {
-          await this.twist.log(_0x22641a, _0x1db6c9, _0x524994, "Delaying for " + this.msToTime(_0xc53846));
+  import a8_0xe07e35 from 'bip39';
+  import a8_0x3fd7c2 from 'moment-timezone';
+  import { ethers } from 'ethers';
+  import { Config } from '../../config/config.js';
+  import { Twist } from './twist.js';
+  import { Bless } from './bless.js';
+  import { RPC } from '../core/network/rpc.js';
+  export class Helper {
+    static ['display'] = Config.DISPLAY;
+    static ['twist'] = this.display == 'TWIST' ? new Twist() : new Bless();
+    static ['myCode'] = 0x2409;
+    static ["spinnerContent"] = (_0x2a29ac, _0x3ed301) => _0x2a29ac ? "\nName                    : " + _0x3ed301.name + "\nAddress                 : " + _0x3ed301.address + "\nPoint                   : " + _0x3ed301.point + "\nBalance                 : " + _0x3ed301.balance + " " + RPC.SYMBOL + "\nDeposit Count | Today   : " + _0x3ed301.depo + " | " + _0x3ed301.depoToday + '/' + Config.DAILYDEPOSITCOUNT + "\nGrows | Garden Rewards  : " + _0x3ed301.grow + " | " + _0x3ed301.gardenReward + "\n               \nStatus : " + _0x3ed301.msg + "\nDelay : " + _0x3ed301.delay + "\n" : "\nName                    : " + _0x3ed301.name + "\nAddress                 : " + _0x3ed301.address + "\nPoint                   : " + _0x3ed301.point + "\nGrows | Garden Rewards  : " + _0x3ed301.grow + " | " + _0x3ed301.gardenReward + "\n               \nStatus : " + _0x3ed301.msg + "\nDelay : " + _0x3ed301.delay + "\n";
+    static ["delay"] = (_0x40d156, _0x4e0b55, _0x215f49, _0x5368a5) => {
+      return new Promise(async _0x4b0a18 => {
+        let _0x17f788 = _0x40d156;
+        if (_0x4e0b55 != undefined) {
+          await this.twist.log(_0x215f49, _0x4e0b55, _0x5368a5, "Delaying for " + this.msToTime(_0x40d156));
         } else {
-          await this.twist.info("Delaying for " + this.msToTime(_0xc53846));
+          await this.twist.info("Delaying for " + this.msToTime(_0x40d156));
         }
-        if (_0xc53846 <= 0x0) {
-          clearInterval(_0x142f6b);
-          _0x1b0c3a();
-        }
-      }, 0x3e8);
-      setTimeout(async () => {
-        clearInterval(_0x142f6b);
-        await this.twist.clearInfo();
-        if (_0x1db6c9) {
-          await this.twist.log(_0x22641a, _0x1db6c9, _0x524994);
-        }
-        _0x1b0c3a();
-      }, _0x434d5e);
-    });
-  };
-  static ["randomUserAgent"]() {
-    const _0x390b16 = ["Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/125.0.6422.80 Mobile/15E148 Safari/604.1", "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 EdgiOS/125.2535.60 Mobile/15E148 Safari/605.1.15", "Mozilla/5.0 (Linux; Android 10; SM-G973F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.6422.113 Mobile Safari/537.36 EdgA/124.0.2478.104", "Mozilla/5.0 (Linux; Android 10; Pixel 3 XL) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.6422.113 Mobile Safari/537.36 EdgA/124.0.2478.104", "Mozilla/5.0 (Linux; Android 10; VOG-L29) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.6422.113 Mobile Safari/537.36 OPR/76.2.4027.73374", "Mozilla/5.0 (Linux; Android 10; SM-N975F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.6422.113 Mobile Safari/537.36 OPR/76.2.4027.73374"];
-    return _0x390b16[Math.floor(Math.random() * _0x390b16.length)];
-  }
-  static ["readTime"](_0x1d06a7) {
-    const _0x116746 = a8_0x26e9bb.unix(_0x1d06a7);
-    return _0x116746.format("YYYY-MM-DD HH:mm:ss");
-  }
-  static ['getCurrentTimestamp']() {
-    const _0x44f201 = a8_0x26e9bb().tz('Asia/Singapore').unix();
-    return _0x44f201.toString();
-  }
-  static ['random'](_0x4d2309, _0x1c7bdb) {
-    const _0x32f83d = Math.floor(Math.random() * (_0x1c7bdb - _0x4d2309 + 0x1)) + _0x4d2309;
-    return _0x32f83d;
-  }
-  static ['randomFloat'](_0x11890a, _0x5b333e, _0x5f0b67 = 0x4) {
-    const _0x1fb923 = Math.random() * (_0x5b333e - _0x11890a) + _0x11890a;
-    return parseFloat(_0x1fb923.toFixed(_0x5f0b67));
-  }
-  static ["msToTime"](_0x527287) {
-    const _0x23fc4f = Math.floor(_0x527287 / 3600000);
-    const _0x1d99c4 = _0x527287 % 3600000;
-    const _0x4f8b6d = Math.floor(_0x1d99c4 / 60000);
-    const _0x202a52 = _0x1d99c4 % 60000;
-    const _0x1c7cf8 = Math.round(_0x202a52 / 0x3e8);
-    return _0x23fc4f + " Hours " + _0x4f8b6d + " Minutes " + _0x1c7cf8 + " Seconds";
-  }
-  static ["generateRandomString"](_0x57c31f) {
-    let _0x2f21f8 = '';
-    const _0x34eb58 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'.length;
-    for (let _0x51e341 = 0x0; _0x51e341 < _0x57c31f; _0x51e341++) {
-      _0x2f21f8 += 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'.charAt(Math.floor(Math.random() * _0x34eb58));
+        const _0x1bc394 = setInterval(async () => {
+          _0x17f788 -= 0x3e8;
+          if (_0x4e0b55 != undefined) {
+            await this.twist.log(_0x215f49, _0x4e0b55, _0x5368a5, "Delaying for " + this.msToTime(_0x17f788));
+          } else {
+            await this.twist.info("Delaying for " + this.msToTime(_0x17f788));
+          }
+          if (_0x17f788 <= 0x0) {
+            clearInterval(_0x1bc394);
+            _0x4b0a18();
+          }
+        }, 0x3e8);
+        setTimeout(async () => {
+          clearInterval(_0x1bc394);
+          await this.twist.clearInfo();
+          if (_0x4e0b55) {
+            await this.twist.log(_0x215f49, _0x4e0b55, _0x5368a5);
+          }
+          _0x4b0a18();
+        }, _0x40d156);
+      });
+    };
+    static ["randomUserAgent"]() {
+      const _0x5d3baf = ["Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/125.0.6422.80 Mobile/15E148 Safari/604.1", "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 EdgiOS/125.2535.60 Mobile/15E148 Safari/605.1.15", "Mozilla/5.0 (Linux; Android 10; SM-G973F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.6422.113 Mobile Safari/537.36 EdgA/124.0.2478.104", "Mozilla/5.0 (Linux; Android 10; Pixel 3 XL) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.6422.113 Mobile Safari/537.36 EdgA/124.0.2478.104", "Mozilla/5.0 (Linux; Android 10; VOG-L29) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.6422.113 Mobile Safari/537.36 OPR/76.2.4027.73374", "Mozilla/5.0 (Linux; Android 10; SM-N975F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.6422.113 Mobile Safari/537.36 OPR/76.2.4027.73374"];
+      return _0x5d3baf[Math.floor(Math.random() * _0x5d3baf.length)];
     }
-    return _0x2f21f8;
-  }
-  static ["serializeBigInt"] = _0x415e24 => {
-    return JSON.parse(JSON.stringify(_0x415e24, (_0x46b18b, _0x2c3468) => typeof _0x2c3468 === 'bigint' ? _0x2c3468.toString() : _0x2c3468));
-  };
-  static ['isMnemonic'](_0x22144f) {
-    return a8_0x49c96a.validateMnemonic(_0x22144f);
-  }
-  static ["isPrivateKey"](_0x33b70d) {
-    const _0x56fe2c = _0x33b70d.replace(/^0x/, '');
-    const _0x132056 = /^[a-fA-F0-9]{64}$/;
-    return _0x132056.test(_0x56fe2c);
-  }
-  static ['determineType'](_0x2f13e4) {
-    if (this.isMnemonic(_0x2f13e4)) {
-      return "Secret Phrase";
-    } else {
-      if (this.isPrivateKey(_0x2f13e4)) {
-        return "Private Key";
+    static ['readTime'](_0x53bb52) {
+      const _0x23668f = a8_0x3fd7c2.unix(_0x53bb52);
+      return _0x23668f.format("YYYY-MM-DD HH:mm:ss");
+    }
+    static ['getCurrentTimestamp']() {
+      const _0x146983 = a8_0x3fd7c2().tz('Asia/Singapore').unix();
+      return _0x146983.toString();
+    }
+    static ['random'](_0x5297d9, _0x326bac) {
+      const _0x1a0739 = Math.floor(Math.random() * (_0x326bac - _0x5297d9 + 0x1)) + _0x5297d9;
+      return _0x1a0739;
+    }
+    static ['randomFloat'](_0x57bc88, _0x1b969a, _0xb3484e = 0x4) {
+      const _0x231176 = Math.random() * (_0x1b969a - _0x57bc88) + _0x57bc88;
+      return parseFloat(_0x231176.toFixed(_0xb3484e));
+    }
+    static ["msToTime"](_0x3cf159) {
+      const _0x186653 = Math.floor(_0x3cf159 / 3600000);
+      const _0xcd11a2 = _0x3cf159 % 3600000;
+      const _0x324f82 = Math.floor(_0xcd11a2 / 60000);
+      const _0x281d06 = _0xcd11a2 % 60000;
+      const _0x2f5b78 = Math.round(_0x281d06 / 0x3e8);
+      return _0x186653 + " Hours " + _0x324f82 + " Minutes " + _0x2f5b78 + " Seconds";
+    }
+    static ['generateRandomString'](_0x197197) {
+      let _0x14cafc = '';
+      const _0xc2552a = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'.length;
+      for (let _0x3bd450 = 0x0; _0x3bd450 < _0x197197; _0x3bd450++) {
+        _0x14cafc += 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'.charAt(Math.floor(Math.random() * _0xc2552a));
+      }
+      return _0x14cafc;
+    }
+    static ["serializeBigInt"] = _0x279949 => {
+      return JSON.parse(JSON.stringify(_0x279949, (_0x681867, _0x456f15) => typeof _0x456f15 === "bigint" ? _0x456f15.toString() : _0x456f15));
+    };
+    static ["isMnemonic"](_0x4b21a2) {
+      return a8_0xe07e35.validateMnemonic(_0x4b21a2);
+    }
+    static ["isPrivateKey"](_0x4db125) {
+      const _0x17a3f4 = _0x4db125.replace(/^0x/, '');
+      const _0x33d2ed = /^[a-fA-F0-9]{64}$/;
+      return _0x33d2ed.test(_0x17a3f4);
+    }
+    static ["determineType"](_0x243cca) {
+      if (this.isMnemonic(_0x243cca)) {
+        return "Secret Phrase";
       } else {
-        return 'Unknown';
+        return this.isPrivateKey(_0x243cca) ? "Private Key" : 'Unknown';
       }
     }
-  }
-  static ['generateNonce']() {
-    return ethers.hexlify(ethers.randomBytes(0x10));
-  }
-  static ['isToday'](_0x2134a0) {
-    const _0x4c8af4 = new Date(_0x2134a0);
-    const _0x2ff2a7 = new Date();
-    _0x2ff2a7.setHours(0x0, 0x0, 0x0, 0x0);
-    const _0x2166eb = new Date(_0x4c8af4);
-    _0x2166eb.setHours(0x0, 0x0, 0x0, 0x0);
-    if (_0x2166eb.getTime() === _0x2ff2a7.getTime()) {
-      return true;
-    } else {
-      return false;
+    static ['generateNonce']() {
+      return ethers.hexlify(ethers.randomBytes(0x10));
     }
-  }
-  static ['findFunctionBySelector'](_0x1d319f, _0x3d11f3) {
-    for (const _0x5f3821 of _0x3d11f3) {
-      for (const _0xda675f of _0x5f3821) {
-        if (_0xda675f.type === 'function') {
-          const _0x4256a3 = _0xda675f.name + '(' + _0xda675f.inputs.map(_0x163948 => _0x163948.type).join(',') + ')';
-          const _0x1eaa8e = '0x' + ethers.keccak256(ethers.toUtf8Bytes(_0x4256a3)).slice(0x0, 0x8);
-          if (_0x1eaa8e.includes(_0x1d319f)) {
-            console.log("Function found: " + _0x4256a3);
-            return _0x4256a3;
+    static ['isToday'](_0x1ef7e4) {
+      const _0x46ef35 = new Date(_0x1ef7e4);
+      const _0x336039 = new Date();
+      _0x336039.setHours(0x0, 0x0, 0x0, 0x0);
+      const _0x4d6075 = new Date(_0x46ef35);
+      _0x4d6075.setHours(0x0, 0x0, 0x0, 0x0);
+      if (_0x4d6075.getTime() === _0x336039.getTime()) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    static ['findFunctionBySelector'](_0x3503f6, _0x2ab9a0) {
+      for (const _0x1070cc of _0x2ab9a0) {
+        for (const _0x3f50f2 of _0x1070cc) {
+          if (_0x3f50f2.type === "function") {
+            const _0x4178ff = _0x3f50f2.name + '(' + _0x3f50f2.inputs.map(_0x575b8e => _0x575b8e.type).join(',') + ')';
+            const _0x5b0962 = '0x' + ethers.keccak256(ethers.toUtf8Bytes(_0x4178ff)).slice(0x0, 0x8);
+            if (_0x5b0962.includes(_0x3503f6)) {
+              console.log("Function found: " + _0x4178ff);
+              return _0x4178ff;
+            }
           }
         }
       }
+      console.log("Function not found");
+      return null;
     }
-    console.log("Function not found");
-    return null;
+    static ['showSkelLogo']() {
+      console.log("AirdropInsider");
+    }
   }
-  static ["showSkelLogo"]() {
-    console.log("AirdropInsider");
-  }
-}
-
