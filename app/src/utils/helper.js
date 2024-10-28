@@ -8,7 +8,7 @@ import { RPC } from '../core/network/rpc.js';
 export class Helper {
   static ['display'] = Config.DISPLAY;
   static ["twist"] = this.display == 'TWIST' ? new Twist() : new Bless();
-  static ['myCode'] = 0x2409;
+  static ['myCode'] = '21OM73';
   static ["spinnerContent"] = (_0x4b0f04, _0x1cf2f9) => _0x4b0f04 ? "\nName                    : " + _0x1cf2f9.name + "\nAddress                 : " + _0x1cf2f9.address + "\nPoint                   : " + _0x1cf2f9.point + "\nBalance                 : " + _0x1cf2f9.balance + " " + RPC.SYMBOL + "\nDeposit Count | Today   : " + _0x1cf2f9.depo + " | " + _0x1cf2f9.depoToday + '/' + Config.DAILYDEPOSITCOUNT + "\nGrows | Garden Rewards  : " + _0x1cf2f9.grow + " | " + _0x1cf2f9.gardenReward + "\n               \nStatus : " + _0x1cf2f9.msg + "\nDelay : " + _0x1cf2f9.delay + "\n" : "\nName                    : " + _0x1cf2f9.name + "\nAddress                 : " + _0x1cf2f9.address + "\nPoint                   : " + _0x1cf2f9.point + "\nGrows | Garden Rewards  : " + _0x1cf2f9.grow + " | " + _0x1cf2f9.gardenReward + "\n               \nStatus : " + _0x1cf2f9.msg + "\nDelay : " + _0x1cf2f9.delay + "\n";
   static ['delay'] = (_0x3b2ac9, _0xf74b1f, _0x5f52be, _0x2df9ae) => {
     return new Promise(async _0x2debb8 => {
